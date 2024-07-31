@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Odliczanko</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  </head>
+  <body>
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <h2>Jeszcze tylko:</h2> 
+                <h1 id="date-box"></h1>
+                <h2>i przyjedzie Tomo !</h2>  
+                <h2>🤩🤩🤩</h2>  
+            </div>
+        </div>
+    </main>
+	<script>
+        window.addEventListener('DOMContentLoaded', () => {
+            var countDownDate = new Date("Aug 2, 2024 20:30:00").getTime();
+            
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+            // Get today's date and time
+            var now = new Date().getTime();
+                
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+                
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+            // Output the result in an element with id="demo"
+            document.getElementById("date-box").innerHTML = days + " dni i " + hours + ":"
+            + minutes + ":" + seconds + " godzin ";
+                
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelectorAll("h2").forEach(h2 => h2.style.opacity = 0)
+                document.getElementById("date-box").innerHTML = "JUŻ JESSSSSSSSSSSSS ! 🥳";
+            }
+            }, 1000);
+
+
+            setTimeout(() => {
+                document.querySelector('.container').style.opacity = 1;
+                document.querySelector('.container').style.transform = 'scale(1)';
+            }, 1500)
+        })
+        
+        </script>
+        <style>
+            body {
+                background-color: black;
+            }
+            .wrapper {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px 20px 0;
+                text-align: center;
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                height: 90dvh;
+                display: flex;
+                justify-content: center;
+                align-items: end;
+                box-shadow: 0 0 16px 16px black inset;
+            }
+            .container{
+                opacity: 0;
+                transform: scale(0.8);
+                transition: all 300ms ease-in;
+                background-color: black;
+                color: white;
+                border-radius: 30px;
+                padding: 10px;
+                width: 320px;
+                box-shadow: 0 0 5px 5px black ;
+                font-size: 12px;
+
+                @media screen and (min-width:768px){
+                    font-size: 16px;
+                }
+            }
+        </style>
+  </body>
+</html>
